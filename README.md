@@ -1,4 +1,4 @@
-# CTF_Writeups
+# CTFs Writeups
 
 Writeups of CTFs that we created or participated in.
 
