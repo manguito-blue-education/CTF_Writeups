@@ -1,0 +1,29 @@
+version: "3.8"
+services:  
+  challenge_web_4_frontend:
+    # Remember to embed the BACKEND_HOST env when you create
+    # the docker image
+    image: roeeyn/challenge_web_4_frontend
+    depends_on:
+      - challenge_web_4_backend
+    restart: always
+    ports:
+      - "5005:80"
+
+  challenge_web_4_backend:
+    image: roeeyn/challenge_web_4_backend
+    depends_on:
+      - challenge_web_4_db
+    restart: always
+    environment:
+      - DB_PSWD=iamnotgroot
+      - DB_HOST=challenge_web_4_db
+    # The backend needs to be publicly available
+    ports:
+      - "5006:5000"
+
+  challenge_web_4_db:
+    image: roeeyn/challenge_web_4_db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=iamgroot
